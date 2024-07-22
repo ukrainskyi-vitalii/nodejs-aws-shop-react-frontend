@@ -7,11 +7,12 @@ import { formatAsPrice } from "~/utils/utils";
 import AddProductToCart from "~/components/AddProductToCart/AddProductToCart";
 
 type CartItemsProps = {
-  items: CartItem[];
+  items?: CartItem[];
   isEditable: boolean;
 };
 
-export default function CartItems({ items, isEditable }: CartItemsProps) {
+export default function CartItems({ items = [], isEditable }: CartItemsProps) {
+  items = Array.isArray(items) ? items : [];
   const totalPrice: number = items.reduce(
     (total, item) => item.count * item.product.price + total,
     0

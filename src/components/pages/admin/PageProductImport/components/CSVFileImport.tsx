@@ -30,7 +30,6 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
       alert("Please select a file to upload");
       return;
     }
-
     const auth_token = localStorage.getItem("authorization_token")
     const headers: AxiosRequestHeaders = auth_token ? {Authorization: `Basic ${auth_token}`} : {}
 

@@ -57,8 +57,8 @@ export default function PageOrder() {
   const invalidateOrder = useInvalidateOrder();
   const cartItems: CartItem[] = React.useMemo(() => {
     if (order && products) {
-      return order.items.map((item: OrderItem) => {
-        const product = products.find((p) => p.id === item.productId);
+      return order.cart.items.map((item: OrderItem) => {
+        const product = products.find((p) => p.id === item.product_id);
         if (!product) {
           throw new Error("Product not found");
         }
@@ -87,7 +87,7 @@ export default function PageOrder() {
       <Typography variant="h6">Change status:</Typography>
       <Box py={2}>
         <Formik
-          initialValues={{ status: lastStatusItem.status, comment: "" }}
+          initialValues={{ status: lastStatusItem?.status, comment: "" }}
           enableReinitialize
           onSubmit={(values) =>
             updateOrderStatus(
