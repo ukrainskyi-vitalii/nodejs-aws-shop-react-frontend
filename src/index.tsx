@@ -6,7 +6,24 @@ import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import axios from 'axios';
 import { theme } from "~/theme";
+import "./app.css"
+
+// Axios interceptor to handle 401 and 403 status codes
+axios.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.response) {
+      if (error.response.status === 401) {
+        alert("Unauthorized: Please provide valid credentials.");
+      } else if (error.response.status === 403) {
+        alert("Forbidden: You do not have permission to access this resource.");
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 const queryClient = new QueryClient({
   defaultOptions: {
