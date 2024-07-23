@@ -55,7 +55,7 @@ export const handlers = [
 //   rest.delete(`${API_PATHS.order}/order/:id`, (req, res, ctx) => {
 //     return res(ctx.status(200));
 //   }),
-  rest.put(`${API_PATHS.order}/order/:id/status`, (req, res, ctx) => {
-    return res(ctx.status(200));
-  }),
+//   rest.put(`${API_PATHS.order}/order/:id/status`, (req, res, ctx) => {
+//     return res(ctx.status(200));
+//   }),
 ];
