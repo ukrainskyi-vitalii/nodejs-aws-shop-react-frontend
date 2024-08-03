@@ -9,7 +9,7 @@ type ReviewOrderProps = {
   items: CartItem[];
 };
 
-export default function ReviewOrder({ address, items }: ReviewOrderProps) {
+export default function ReviewOrder({ address = {}, items = [] }: ReviewOrderProps) {
   return (
     <>
       <Typography variant="h6" gutterBottom>
